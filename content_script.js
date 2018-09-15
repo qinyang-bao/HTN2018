@@ -11,10 +11,11 @@
 		let valid = 
         (keycode > 47 && keycode < 58)   || // number keys
         keycode == 32 || keycode == 13   || // spacebar & return key(s) (if you want to allow carriage returns)
+        keycode == 8				     ||	// backspace
         (keycode > 64 && keycode < 91)   || // letter keys
         (keycode > 95 && keycode < 112)  || // numpad keys
         (keycode > 185 && keycode < 193) || // ;=,-./` (in order)
-        (keycode > 218 && keycode < 223);   // [\]' (in order)
+        (keycode > 218 && keycode < 223) ;   // [\]' (in order)
         if (valid){
         	return true;
         }
@@ -31,26 +32,8 @@
 							//called when successful
 							console.log("data: ", data);
 
-							// anger level: (0) <0.5 (1) 0.5 - 0.7 (2) 0.7 - 0.9 (3) >0.9
-							let documentToneAnger = "";
-
-							//return array if has anger
-							let docToneData = data.document_tone.tones.filter(tone => tone.tone_id === "anger");
-							console.log("docToneData", docToneData);
-							if (docToneData.length !=0 ){
-								if (docToneData[0].score >= 0.5 && docToneData[0].score < 0.7) {
-									documentToneAnger = 1;
-								} else if (docToneData[0].score >= 0.7 && docToneData[0].score < 0.9) {
-									documentToneAnger = 2;
-								} else if (docToneData[0].score >= 0.9) {
-									documentToneAnger = 3;
-								} else {
-									documentToneAnger = 0;
-								}
-								console.log("docAnger: ", documentToneAnger);
-
-								update_ele(fb_get_active_ele, documentToneAnger);
-							}
+							documentToneAnger = evaulate_data(data);
+							update_ele(fb_get_active_ele, documentToneAnger);
 					
 						},
 						error: function(e) {
@@ -63,6 +46,31 @@
 		else{
 			update_ele(fb_get_active_ele, 3);
 		}
+    }
+
+
+    function evaulate_data(data){
+		// anger level: (0) <0.5 (1) 0.5 - 0.7 (2) 0.7 - 0.9 (3) >0.9
+		let documentToneAnger = "";
+
+		//return array if has anger
+		let docToneData = data.document_tone.tones.filter(tone => tone.tone_id === "anger");
+		console.log("docToneData", docToneData);
+		if (docToneData.length !=0 ){
+			if (docToneData[0].score >= 0.5 && docToneData[0].score < 0.7) {
+				documentToneAnger = 1;
+			} else if (docToneData[0].score >= 0.7 && docToneData[0].score < 0.9) {
+				documentToneAnger = 2;
+			} else if (docToneData[0].score >= 0.9) {
+				documentToneAnger = 3;
+			} else {
+				documentToneAnger = 0;
+			}
+			console.log("docAnger: ", documentToneAnger);
+
+			return documentToneAnger;
+		}
+
     }
 
     function update_ele(get_active_ele, data){
@@ -97,7 +105,15 @@
 	  console.log("raw", e.keyCode, e.key);
 	  if (valid_key(e.keyCode)){
 	  	var key = e.key;
-	  	comment += key;
+	  	if (key != "Backspace"){
+	  		comment += key;
+	  	}
+	  	else{
+	  		if(comment != ""){
+	  			comment = comment.substring(0, comment.length - 1);
+	  		}
+	  	}
+	  	
 	  	console.log(key, comment);
 
 	  	if (key == "."){
