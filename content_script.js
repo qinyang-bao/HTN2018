@@ -5,6 +5,14 @@
 	document.head.appendChild(script);
 	
 
-	p = $("title").html();
-	console.log(p);
+	//p = $("title").html();
+	//console.log(p);
+	setInterval(function() {
+  	var activeElement = document.activeElement;
+  	console.log(activeElement.tagName);
+	}, 5000);
+	
+
+
+
 })();
