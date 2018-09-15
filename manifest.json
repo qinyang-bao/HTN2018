@@ -2,7 +2,7 @@
     "name": "Getting Started Example",
     "version": "1.0",
     "description": "Build an Extension!",
-    "permissions": ["storage", "declarativeContent", "activeTab"],
+    "permissions": ["storage", "declarativeContent", "activeTab", "input"],
     "background": {
       "scripts": ["background.js"],
       "persistent": false
@@ -17,7 +17,7 @@
         "128": "images/get_started128.png"
       }
     },
-
+    
     "content_scripts": [
 	   {
 	     "matches": ["https://www.facebook.com/*", "https://developer.chrome.com/*"],
