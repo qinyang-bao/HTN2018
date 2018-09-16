@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+#warning3 {
+    height: 100px;
+    width: 200px;
+    border-radius: 11px;
+    background-color: #FFC1C1; 
+    font-family: 'Source Sans Pro', sans-serif;
+    box-shadow: 0px 6px 28px rgba(0, 0, 0, 0.25);
+}
+
+#p3_1 {
+    font-size: 30px;
+}
+
+#p3_2 {
+    font-size: 20px;
+}

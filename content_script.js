@@ -45,7 +45,7 @@
         return false;
     }
 
-    function call_api(comment, test=false){
+    function call_api(comment, test=true){
     	if (!test){
 			let apitext = comment.split(" ").join("%20");
 				  	$.ajax({
@@ -57,7 +57,7 @@
 
 							result = evaluate_data(data);
 							console.log("result: ", result);
-							update_ele(twitter_get_active_ele, result, comment);
+							update_ele(chrome_get_active_ele, result, comment);
 					
 						},
 						error: function(e) {
@@ -146,65 +146,8 @@
     	let ud_color_match = {"undefined": "none", 0: "none", 1:"#C2C2C2", 2:"#C2C2C2", 3:"#C2C2C2"};
 
     	if (typeof(ele) != "undefined" && typeof(data) != "undefined"){
-    		/*
-    		ele.style.textDecoration = "underline wavy " + ud_color_match[data.document];
-    		ele.setAttribute("id", "active_element");
-
-    		$("#active_element").hover(
-	            function(event) {
-	                // mouse in event handler
-	                var elem = event.currentTarget;
-	            },
-	            function(event) {
-	                // mouse out event handler
-	                var elem = event.currentTarget;
-	            }
-	        );
-	        */
-
-	        /*
-    		let new_ele = document.createElement('span');
-    		new_ele.setAttribute("data-toggle", "tooltip");
-    		new_ele.setAttribute("title", warning_match[data.document]);
-    		new_ele.setAttribute("id", "warning");
-
-    		
-			if (data.sentences.length == 0){
-    			
-				new_ele.innerText = ele.innerText;
-				
-				new_ele.style.backgroundColor = bg_color_match[data.document];
-				if (bg_color_match[data.document] != "none"){
-		    			new_ele.style.textDecoration  = "underline wavy " + ud_color_match[data.document];
-		    		}
-
-		    	ele.appendChild(new_ele);
-		    	empty_top_node(ele);
-
-		    	//document.getElementById("_new_span_ele").style.display = "inline";
-		    	
-			}
-
-			else{
-    	
-				
-				for (var i=0; i<data.sentences.length; i++){
-					sentence = document.createElement("span");   
-		    		sentence.innerText = data.sentences[i].text;
-		    		sentence.style.backgroundColor = bg_color_match[data.sentences[i].tone];
-		    		if (bg_color_match[data.sentences[i].tone] != "none"){
-		    			sentence.style.textDecoration  = "underline wavy" + ud_color_match[data.sentences[i].tone];
-		    		}
-		    		
-		    		new_ele.appendChild(sentence);
-				}
-
-				ele.appendChild(new_ele);
-				empty_top_node(ele);
-				//console.log(ele.innerHTML);
-			}
-			*/
-
+		
+			div3.innerHTLM = "warning";
 			let new_ele = document.createElement('span');
     		new_ele.setAttribute("data-toggle", "tooltip");
     		new_ele.setAttribute("title", warning_match[data.document]);
@@ -249,32 +192,37 @@
 
     function general_get_active_ele(){
     	return document.activeElement;
-    }
-
-    function twitter_get_active_ele(){
+	}
+	
+	function twitter_get_active_ele(){
     	return document.activeElement.getElementsByTagName("div")[0];
     }
+	
+	function chrome_get_active_ele() {
+		return decument.activeElement.getElementsByTagName("div")[0];
+	}
 
     function fb_get_active_ele(){
     	//var selector = ":contains("+ comment +")";
 	  	//activeElement = $(selector);
 	  	//console.log("element: ", activeElement.html());
-	  	var ae = document.activeElement;
+		var ae = document.activeElement;
+		console.log(ae);
 	  	var children = ae.getElementsByTagName("*");
-	  	for (var i=0; i<children.length; i++){
-	  		if (children[i].getAttribute("data-text")){
-	  			return children[i];
-	  		}
-	  		
-	  	}
-		//console.log(activeElement.html());
+		for (var i=0; i<children.length; i++){
+			if (children[i].getAttribute("data-text")){
+				return children[i];
+			} 		
+		}
     }
 
     
 	//add listener for keypress
 	$(document).keydown(function(e) {
-	  if (valid_key(e.keyCode)){
-	  	var key = e.key;
+		console.log("raw", e.keyCode, e.key);
+	  	if (valid_key(e.keyCode)){
+		  var key = e.key;
+		  console.log(key);
 	  	if (key != "Backspace"){
 	  		comment += key;
 	  	}
@@ -283,8 +231,9 @@
 	  			comment = comment.substring(0, comment.length - 1);
 	  		}
 	  	}
-
+		  console.log(key, comment);
 	  	if (key == "."){
+			console.log('hit');
 	  		call_api(comment);
 	    }
 
