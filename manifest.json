@@ -1,5 +1,5 @@
  {
-    "name": "Getting Started Example",
+    "name": "Check Yourself",
     "version": "1.0",
     "description": "Build an Extension!",
     "permissions": ["storage", "declarativeContent", "activeTab", "https://167.99.190.191/call_watson_api?comment=*"],
@@ -11,10 +11,10 @@
     "page_action": {
       "default_popup": "popup.html",
       "default_icon": {
-        "16": "images/get_started16.png",
-        "32": "images/get_started32.png",
-        "48": "images/get_started48.png",
-        "128": "images/get_started128.png"
+        "16": "images/curse.jpeg",
+        "32": "images/curse.jpeg",
+        "48": "images/curse.jpeg",
+        "128": "images/curse.jpeg"
       }
     },
     
@@ -28,10 +28,10 @@
 	],
 
     "icons": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
+      "16": "images/curse.jpeg",
+      "32": "images/curse.jpeg",
+      "48": "images/curse.jpeg",
+      "128": "images/curse.jpeg"
     },
     
     "manifest_version": 2
