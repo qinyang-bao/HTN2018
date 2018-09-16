@@ -141,7 +141,7 @@
     	console.log(ele.innerHTML);
     	//ele.style.display = "none";
 
-    	let warning_match = {"undefined": "", 0: "", 1:"", 2:"Be nicer", 3:"Please reconsider"};
+    	let warning_match = {"undefined": "", 0: "", 1:"", 2:"", 3:"This content may be offensive, please reconsider"};
     	let bg_color_match = {"undefined": "none", 0: "none", 1:"#F9E633", 2:"#FF8C21", 3:"#C11111"};
     	let ud_color_match = {"undefined": "none", 0: "none", 1:"#F9E633", 2:"#FF8C21", 3:"#C11111"};
 
@@ -211,7 +211,9 @@
     		new_ele.setAttribute("id", "warning");
 
     		let warning = document.createElement("p");
-    		warning.innerText = warning_match[data.document];
+    		if (warning_match[data.document] != ""){
+    			warning.innerText = warning_match[data.document];
+    		}
     		warning.setAttribute("id", "warning");
     		warning.style.fontSize = "20px";
     		warning.style.color = "#666363";
