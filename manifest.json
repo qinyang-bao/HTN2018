@@ -1,7 +1,7 @@
  {
     "name": "Check Yourself",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "A chrome extension that analyzes your text to inform you if any potentially offensive or hurtful tones are found. Choosing your words carefully contributes to a safe online environment for everyone!",
     "permissions": ["storage", "declarativeContent", "activeTab", "https://167.99.190.191/call_watson_api?comment=*"],
     "background": {
       "scripts": ["background.js"],
@@ -12,10 +12,9 @@
       "default_popup": "popup.html",
       "default_icon": {
 
-        "16": "images/curse.jpg",
-        "32": "images/curse.jpg",
-        "48": "images/curse.jpg",
-        "128": "images/curse.jpg"
+        "16": "images/curse16.png",
+        "48": "images/curse48.png",
+        "128": "images/curse128.png"
 
       }
     },
@@ -31,10 +30,9 @@
 	],
 
     "icons": {
-      "16": "images/curse.jpg",
-      "32": "images/curse.jpg",
-      "48": "images/curse.jpg",
-      "128": "images/curse.jpg"
+      "16": "images/curse16.png",
+      "48": "images/curse48.png",
+      "128": "images/curse128.png"
     },
     
     "manifest_version": 2
