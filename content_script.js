@@ -54,7 +54,7 @@
 		// anger level: (0) <0.5 (1) 0.5 - 0.7 (2) 0.7 - 0.9 (3) >0.9
 		let documentToneAnger = "";
 		
-		//return array if has anger
+		
 		let docToneData = data.document_tone.tones.filter(tone => tone.tone_id === "anger");
 		if (docToneData.length !=0 ){
 			if (docToneData[0].score >= 0.5 && docToneData[0].score < 0.7) {
@@ -66,29 +66,29 @@
 			} else {
 				documentToneAnger = 0;
 			}
-			console.log("docAnger: ", documentToneAnger);
+			console.log("docAnger:", documentToneAnger);
 
 			if (typeof data.sentences_tone != "undefined") {
 				let sentenceToneData = data.sentences_tone
 				.map(sentence => ({text: sentence.text, tone: sentence.tones.filter(tone => tone.tone_id === "anger")[0]}))
 				.map(sentence => {
-					if (typeof sentence.tone == "undefined") {
-						({text: sentence.text, tone: 0})
-					} else if (sentence.tone >= 0.5 && sentence.tone < 0.7) {
-						({text: sentence.text, tone: 1})
-					} else if (sentence.tone >= 0.7 && sentence.tone < 0.9) {
-						({text: sentence.text, tone: 2})
-					} else if (sentence.tone >= 0.9) {
-						({text: sentence.text, tone: 3})
+					if (sentence.tone == undefined) {
+						return ({text: sentence.text, tone: 0})
+					} else if (sentence.tone.score >= 0.5 && sentence.tone.score < 0.7) {
+						return ({text: sentence.text, tone: 1});
+					} else if (sentence.tone.score >= 0.7 && sentence.tone.score < 0.9) {
+						return ({text: sentence.text, tone: 2});
+					} else if (sentence.tone.score >= 0.9) {
+						return ({text: sentence.text, tone: 3});
 					} else {
-						({text: sentence.text, tone: 0})
+						return ({text: sentence.text, tone: 0});
 					}
 				})
-				console.log(sentenceToneData);
 				return {document: documentToneAnger, sentences: sentenceToneData}
 			}
+			return {document: documentToneAnger, sentences: undefined}
 		}
-    }
+	}
 
     function update_ele(get_active_ele, data){
     	ele = get_active_ele();
