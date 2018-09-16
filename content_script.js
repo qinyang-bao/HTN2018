@@ -22,7 +22,7 @@
         return false;
     }
 
-    function call_api(comment, test=false){
+    function call_api(comment, test=true){
     	if (!test){
 			let apitext = comment.split(" ").join("%20");
 				  	$.ajax({
@@ -91,14 +91,25 @@
     function update_ele(get_active_ele, data){
 		ele = get_active_ele();
 		console.log("ele", ele);
-    	if (typeof(ele) != "undefined" && data > 0){
+    	if (typeof(ele) != "undefined" && data >= 0){
     		//ele.style.color = "red";
 			//ele.setAttribute("id", "_the_one_and_the_only_one_selected");
 			ele.setAttribute("id", "warning");
-			let div = document.createElement("div");
-			document.getElementById("warning").prepend(div);
-			div.setAttribute("style", "width: 100px; height: 30px; background-color: red; color: white; font-size: 12px");
-			div.innerText = "!Warning";
+
+			//warning 3
+			let div3 = document.createElement("div");
+			document.getElementById("warning").prepend(div3);
+			div3.setAttribute("id", "warning3");
+
+			let p3_1 = document.createElement("div");
+			p3_1.setAttribute("id", "p3_1")
+			div3.appendChild(p3_1);
+			p3_1.innerHTML= "!";
+
+			let p3_2 = document.createElement("div");
+			p3_2.setAttribute("id", "p3_2")
+			div3.appendChild(p3_2);
+			p3_2.innerHTML= "This content may be offensive or hurtful. \nPlease consider rephrasing it differently.";
 			console.log(ele);
     	}
     }
