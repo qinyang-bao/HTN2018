@@ -9,7 +9,8 @@ chrome.runtime.onInstalled.addListener(function() {
           conditions: [new chrome.declarativeContent.PageStateMatcher({
             //pageUrl: {hostEquals: 'www.facebook.com'},
             //pageUrl: {hostEquals: 'developer.chrome.com'},
-            pageUrl: {hostEquals: 'twitter.com'},
+           //ageUrl: {hostEquals: 'twitter.com'},
+           pageUrl: {hostEquals: 'productforums.google.com'},
           })
           ],
               actions: [new chrome.declarativeContent.ShowPageAction()]

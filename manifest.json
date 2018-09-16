@@ -20,7 +20,7 @@
     
     "content_scripts": [
 	   {
-	     "matches": ["https://www.facebook.com/*", "https://developer.chrome.com/*", "https://twitter.com/*"],
+	     "matches": ["https://www.facebook.com/*", "https://developer.chrome.com/*", "https://twitter.com/*", "https://productforums.google.com/*"],
 	     "run_at": "document_idle",
 	     "all_frames": true,
 	     "js": ["jquery-3.3.1.min.js", "content_script.js"]
