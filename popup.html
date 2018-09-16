@@ -1,32 +1,116 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
   <head>
     <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
+    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
+
+      h1 {
+        font-size: 18px;
+        font-family: "Ubuntu";
+        font-weight: bold;
+        padding: 10px 21px 0px 21px;
       }
+
+      p {
+        font-size: 14px;
+        font-family: "Source Sans Pro";
+        padding: 0px 21px;
+      }
+
+      body {
+        width: 266px;
+        height: 285px;
+      }
+
+      hr {
+        border-style: solid;
+        border-width: 0.5px;
+        size: 1px;
+        color: #C2C2C2;
+      }
+
+      .hr {
+        background-color: #C2C2C2;
+      }
+
+      p.degrees {
+            font-family: "Source Sans Pro";
+            font-size: 14px;
+            line-height: 5px;
+            color: #000000;
+            display: inline-block;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        
+        /* YELLOW */
+        #yellow {
+            width: 12px;
+            height: 27px;
+            background: #F9E633;
+            transform: rotate(-180deg);
+            display: inline-block;
+            margin-left: 21px;
+            margin-bottom: -8px;
+        }
+                
+        /* ORANGE */
+        #orange{
+            width: 12px;
+            height: 27px;
+            background: #FF8C21;
+            transform: rotate(-180deg);
+            display: inline-block;
+            margin-left: 21px;
+            margin-bottom: -8px;
+        }        
+        
+        /* RED */
+        #red {
+            width: 12px;
+            height: 27px;
+            background: #C11111;
+            transform: rotate(-180deg);
+            display: inline-block;
+            margin-left: 21px;
+            margin-bottom: -8px;
+        }
+        
+        /* LINE */
+        #line {
+            width: 266px;
+            height: 1px;
+            margin: 10px 0px;
+            background: #C2C2C2;
+            transform: rotate(-180deg);
+        }
+        
+        /* EMOJI */
+        img.emoji {
+            display: inline-block;
+            padding-left: 0px;
+            width: 25px;
+            height: 25px;
+            margin-bottom: -7px;
+        }
+
     </style>
   </head>
   <body>
-    <button id="changeColor"></button>
+    <div id = "title"><h1>Check Yourself</h1></div>
+    <div id = "body"><p>Analyzes your text to inform you if any potentially offensive or hurtful tones are found. Choosing your words carefully contributes to a safe online environment for everyone!</p></div>
+        
+        <div id="line"></div>
+        
+        <div id="yellow"></div> <p class="degrees">Light degree of offense tones</p> <img class="emoji" src="images/sad.jpeg"> <br />
+        
+        <div id="orange"></div> <p class="degrees">Medium degree of offense tones</p> <img class="emoji" src="images/eyebrows.jpeg"> <br />
+        
+        <div id="red"></div> <p class="degrees">Heavy degree of offense tones</p> <img class="emoji" src="images/curse.jpeg"> 
+        
+        
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
-=======
-    <head>
-        <style>
-        button {
-            height: 30px;
-            width: 30px;
-            outline: none;
-        }
-        </style>
-    </head>
-    <body>
-        <button id="changeColor"></button>
-    </body>
-</html>
->>>>>>> be8b3d6dd20cec8149219401dde7aa5d76799392
