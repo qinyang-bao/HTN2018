@@ -43,7 +43,7 @@
 					});
 		}
 		else{
-			update_ele(get_active_ele, 3);
+			update_ele(twitter_get_active_ele, 3);
 		}
     }
 
@@ -124,7 +124,7 @@
     	return document.activeElement.getElementsByTagName("div")[0];
     }
 
-    function get_active_ele(){
+    function fb_get_active_ele(){
     	//var selector = ":contains("+ comment +")";
 	  	//activeElement = $(selector);
 	  	//console.log("element: ", activeElement.html());
@@ -132,13 +132,10 @@
 		console.log(ae);
 	  	var children = ae.getElementsByTagName("*");
 		for (var i=0; i<children.length; i++){
-		if (children[i].getAttribute("data-text")){
-			return children[i];
+			if (children[i].getAttribute("data-text")){
+				return children[i];
+			} 		
 		}
-	  		
-		}
-
-		console.log(child);
     }
 
 	//add listener for keypress
