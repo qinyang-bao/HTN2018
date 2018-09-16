@@ -34,7 +34,7 @@
 
 							let angerlevel = evaluate_data(data);
 							console.log("angerlevel", angerlevel);
-							update_ele(fb_get_active_ele, angerlevel.document);
+							update_ele(twitter_get_active_ele, angerlevel.document);
 						},
 						error: function(e) {
 						  //called when there is an error
@@ -43,7 +43,7 @@
 					});
 		}
 		else{
-			update_ele(fb_get_active_ele, 3);
+			update_ele(get_active_ele, 3);
 		}
     }
 
@@ -91,7 +91,7 @@
     function update_ele(get_active_ele, data){
 		ele = get_active_ele();
 		console.log("ele", ele);
-    	if (typeof(ele) != "undefined" && data >= 0){
+    	if (typeof(ele) != "undefined" && data > 0){
     		//ele.style.color = "red";
 			//ele.setAttribute("id", "_the_one_and_the_only_one_selected");
 			ele.setAttribute("id", "warning");
@@ -100,43 +100,52 @@
 			let div3 = document.createElement("div");
 			document.getElementById("warning").prepend(div3);
 			div3.setAttribute("id", "warning3");
+			div3.setAttribute("style", "width: 100px; height: 30px; background-color: red; color: white; font-size: 12px");
+			div3.innerHTLM = "warning";
 
-			let p3_1 = document.createElement("div");
-			p3_1.setAttribute("id", "p3_1")
-			div3.appendChild(p3_1);
-			p3_1.innerHTML= "!";
+			// let p3_1 = document.createElement("p");
+			// p3_1.setAttribute("id", "p3_1")
+			// div3.appendChild(p3_1);
+			// p3_1.innerHTML= "!";
 
-			let p3_2 = document.createElement("div");
-			p3_2.setAttribute("id", "p3_2")
-			div3.appendChild(p3_2);
-			p3_2.innerHTML= "This content may be offensive or hurtful. \nPlease consider rephrasing it differently.";
-			console.log(ele);
+			// let p3_2 = document.createElement("p");
+			// p3_2.setAttribute("id", "p3_2")
+			// div3.appendChild(p3_2);
+			// p3_2.innerHTML= "This content may be offensive or hurtful. \nPlease consider rephrasing it differently.";
+			console.log("war3", div3);
     	}
     }
 
     function chrome_get_active_ele(){
     	return document.activeElement;
+	}
+	
+	function twitter_get_active_ele(){
+    	return document.activeElement.getElementsByTagName("div")[0];
     }
 
-    function fb_get_active_ele(){
+    function get_active_ele(){
     	//var selector = ":contains("+ comment +")";
 	  	//activeElement = $(selector);
 	  	//console.log("element: ", activeElement.html());
-	  	var ae = document.activeElement;
+		var ae = document.activeElement;
+		console.log(ae);
 	  	var children = ae.getElementsByTagName("*");
-	  	for (var i=0; i<children.length; i++){
-	  		if (children[i].getAttribute("data-text")){
-	  			return children[i];
-	  		}
+		for (var i=0; i<children.length; i++){
+		if (children[i].getAttribute("data-text")){
+			return children[i];
+		}
 	  		
-	  	}
-		//console.log(activeElement.html());
+		}
+
+		console.log(child);
     }
 
 	//add listener for keypress
 	$(document).keydown(function(e) {
 	  if (valid_key(e.keyCode)){
-	  	var key = e.key;
+		  var key = e.key;
+		  console.log(key);
 	  	if (key != "Backspace"){
 	  		comment += key;
 	  	}
@@ -147,6 +156,7 @@
 	  	}
 
 	  	if (key == "."){
+			console.log('hit');
 	  		call_api(comment);
 	    }
 
