@@ -45,7 +45,7 @@
         return false;
     }
 
-    function call_api(comment, test=true){
+    function call_api(comment, test=false){
     	if (!test){
 			let apitext = comment.split(" ").join("%20");
 				  	$.ajax({
