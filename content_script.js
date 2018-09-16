@@ -57,7 +57,7 @@
 
 							result = evaluate_data(data);
 							console.log("result: ", result);
-							update_ele(twitter_get_active_ele, result, comment);
+							update_ele(google_get_active_ele, result, comment);
 					
 						},
 						error: function(e) {
@@ -72,7 +72,7 @@
 			// async and event listener ... but anyways, when we are using the actual api, i.e. not testing,
 			// there is definitely going to be a delay and that delay is long enough
 			sleep(75).then(() => {
-            	update_ele(twitter_get_active_ele, {"document": 3, "sentences":[{"text": "sentence1", "tone": 3},
+            	update_ele(google_get_active_ele, {"document": 3, "sentences":[{"text": "sentence1", "tone": 3},
             		{"text": "setence2", "tone": 2}]}, comment);
         	});
 			
@@ -143,7 +143,7 @@
 
     	let warning_match = {"undefined": "", 0: "", 1:"", 2:"Be nicer", 3:"Please reconsider"};
     	let bg_color_match = {"undefined": "none", 0: "none", 1:"#F9E633", 2:"#FF8C21", 3:"#C11111"};
-    	let ud_color_match = {"undefined": "none", 0: "none", 1:"#C2C2C2", 2:"#C2C2C2", 3:"#C2C2C2"};
+    	let ud_color_match = {"undefined": "none", 0: "none", 1:"#F9E633", 2:"#FF8C21", 3:"#C11111"};
 
     	if (typeof(ele) != "undefined" && typeof(data) != "undefined"){
     		/*
@@ -213,34 +213,43 @@
     		
 			if (data.sentences.length == 0){
 				new_ele.innerText =  ele.innerText;
+				new_ele.value = new_ele.value;
+				ele.innerHTML = "";
 				
-				new_ele.style.backgroundColor = bg_color_match[data.document];
+				//new_ele.style.backgroundColor = bg_color_match[data.document];
+				//new_ele.style.opacity = 0.4;
 				if (bg_color_match[data.document] != "none"){
-		    			new_ele.style.textDecoration  = "underline wavy " + ud_color_match[data.document];
+		    			//new_ele.style.textDecoration  = "underline " + ud_color_match[data.document];
+		    			new_ele.style.borderBottom = "3px solid " + ud_color_match[data.document];
+		    			new_ele.style.padding = "0 0 3px";
 		    		}
 
 		    	ele.appendChild(new_ele);
-		    	empty_top_node(ele);
+		    	//empty_top_node(ele);
 
 		    	//document.getElementById("_new_span_ele").style.display = "inline";
 		    	
 			}
 
 			else{
-				
+				ele.innerHTML = "";
 				for (var i=0; i<data.sentences.length; i++){
 					sentence = document.createElement("span");   
 		    		sentence.innerText = data.sentences[i].text;
-		    		sentence.style.backgroundColor = bg_color_match[data.sentences[i].tone];
+		    		sentence.value = sentence.value;
+		    		//sentence.style.backgroundColor = bg_color_match[data.sentences[i].tone];
+		    		//sentence.style.opacity = 0.4;
 		    		if (bg_color_match[data.sentences[i].tone] != "none"){
-		    			sentence.style.textDecoration  = "underline wavy" + ud_color_match[data.sentences[i].tone];
+		    			//sentence.style.textDecoration  = "underline " + ud_color_match[data.sentences[i].tone];
+		    			sentence.style.borderBottom = "3px solid " + ud_color_match[data.document];
+		    			sentence.style.padding = "0 0 3px";
 		    		}
 		    		
 		    		new_ele.appendChild(sentence);
 				}
 
 				ele.appendChild(new_ele);
-				empty_top_node(ele);
+				//empty_top_node(ele);
 				//console.log(ele.innerHTML);
 			}
 
@@ -248,6 +257,10 @@
     }
 
     function general_get_active_ele(){
+    	return document.activeElement;
+    }
+
+    function google_get_active_ele(){
     	return document.activeElement;
     }
 
