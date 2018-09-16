@@ -11,16 +11,16 @@
     "page_action": {
       "default_popup": "popup.html",
       "default_icon": {
-        "16": "images/get_started16.png",
-        "32": "images/get_started32.png",
-        "48": "images/get_started48.png",
-        "128": "images/get_started128.png"
+        "16": "images/curse.jpg",
+        "32": "images/curse.jpg",
+        "48": "images/curse.jpg",
+        "128": "images/curse.jpg"
       }
     },
     
     "content_scripts": [
 	   {
-	     "matches": ["https://www.facebook.com/*", "https://developer.chrome.com/*"],
+	     "matches": ["https://www.facebook.com/*", "https://developer.chrome.com/*", "https://twitter.com/*"],
 	     "run_at": "document_idle",
 	     "all_frames": true,
 	     "js": ["jquery-3.3.1.min.js", "content_script.js"]
@@ -28,10 +28,10 @@
 	],
 
     "icons": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
+      "16": "images/curse.jpg",
+      "32": "images/curse.jpg",
+      "48": "images/curse.jpg",
+      "128": "images/curse.jpg"
     },
     
     "manifest_version": 2
