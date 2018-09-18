@@ -6,7 +6,7 @@ Check Yourself
 Analyzes your text to inform you if any potentially offensive or hurtful tones are found. Choosing your words carefully contributes to a safe online environment for everyone!
 
 Example 1:
-![ecxample 1](https://github.com/qinyang-bao/HTN2018/blob/master/images/example1.png "EFfect example 1")
+![ecxample 1](https://github.com/qinyang-bao/HTN2018/blob/master/images/example.png "EFfect example 1")
 
 
 Example 2:
