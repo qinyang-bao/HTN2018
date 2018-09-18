@@ -1,6 +1,12 @@
+// biggest issue:
+// most social media sites seems to merge the elements we added with the existing elements after a while,
+// making it almost impossible to append our own custom elements to visualize the alerts.
+// so currently, this only works on simpler sites, such as google product forum.
+
 (function() {
 	//include jquery and bootstrap
 	
+	// To do: figure out how to include bootstrap in content script
 	/*
 	var bootstrap_css = document.createElement('link');
 	bootstrap_css.setAttribute("rel", "stylesheet");
@@ -50,6 +56,9 @@
 			let apitext = comment.split(" ").join("%20");
 				  	$.ajax({
 						type: "GET",
+						//use our own server as a proxy of the actual watson api.
+						//need to do this to keep the api keys safe, also, seems like IBM has some agreement with facebook
+						//that won't allow calling the api from a facebook page
 						url: "https://167.99.190.191/call_watson_api?comment=" + apitext,
 						success: function(data) {
 							//called when successful
