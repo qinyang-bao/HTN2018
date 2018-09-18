@@ -7,6 +7,6 @@ Analyzes your text to inform you if any potentially offensive or hurtful tones a
 
 Example:
 
-(images/example1.png)
+!(images/example1.png)
 
-(images/example2.png)
+!(images/example2.png)
